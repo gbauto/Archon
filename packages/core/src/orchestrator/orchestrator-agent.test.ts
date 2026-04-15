@@ -1037,6 +1037,11 @@ describe('discoverAllWorkflows — remote sync', () => {
   });
 
   describe('provider cwd resolution', () => {
+    function getCwdPassedToProvider(): string {
+      expect(mockSendQuery).toHaveBeenCalled();
+      return mockSendQuery.mock.calls[0][1] as string;
+    }
+
     test('passes codebase.default_cwd to provider when conversation is codebase-scoped', async () => {
       const codebase = makeCodebaseForSync();
       const conversation = makeConversation({ codebase_id: 'codebase-1', cwd: null });
@@ -1044,12 +1049,9 @@ describe('discoverAllWorkflows — remote sync', () => {
       mockGetCodebase.mockReturnValueOnce(Promise.resolve(codebase));
       mockListCodebases.mockReturnValueOnce(Promise.resolve([codebase]));
 
-      const platform = makePlatform();
-      await handleMessage(platform, 'conv-1', 'What files are in src/?');
+      await handleMessage(makePlatform(), 'conv-1', 'What files are in src/?');
 
-      expect(mockSendQuery).toHaveBeenCalled();
-      const calledCwd = mockSendQuery.mock.calls[0][1] as string;
-      expect(calledCwd).toBe('/repos/test-repo');
+      expect(getCwdPassedToProvider()).toBe('/repos/test-repo');
     });
 
     test('prefers conversation.cwd over codebase.default_cwd when set (worktree)', async () => {
@@ -1062,24 +1064,20 @@ describe('discoverAllWorkflows — remote sync', () => {
       mockGetCodebase.mockReturnValueOnce(Promise.resolve(codebase));
       mockListCodebases.mockReturnValueOnce(Promise.resolve([codebase]));
 
-      const platform = makePlatform();
-      await handleMessage(platform, 'conv-1', 'What files are in src/?');
+      await handleMessage(makePlatform(), 'conv-1', 'What files are in src/?');
 
-      expect(mockSendQuery).toHaveBeenCalled();
-      const calledCwd = mockSendQuery.mock.calls[0][1] as string;
-      expect(calledCwd).toBe('/home/test/.archon/workspaces/owner/repo/worktrees/feature-branch');
+      expect(getCwdPassedToProvider()).toBe(
+        '/home/test/.archon/workspaces/owner/repo/worktrees/feature-branch'
+      );
     });
 
     test('falls back to getArchonWorkspacesPath when conversation has no codebase', async () => {
       const conversation = makeConversation({ codebase_id: null, cwd: null });
       mockGetOrCreateConversation.mockReturnValueOnce(Promise.resolve(conversation));
 
-      const platform = makePlatform();
-      await handleMessage(platform, 'conv-1', 'Hello');
+      await handleMessage(makePlatform(), 'conv-1', 'Hello');
 
-      expect(mockSendQuery).toHaveBeenCalled();
-      const calledCwd = mockSendQuery.mock.calls[0][1] as string;
-      expect(calledCwd).toBe('/home/test/.archon/workspaces');
+      expect(getCwdPassedToProvider()).toBe('/home/test/.archon/workspaces');
     });
 
     test('falls back to getArchonWorkspacesPath when codebase_id is set but codebase not in list', async () => {
@@ -1087,12 +1085,9 @@ describe('discoverAllWorkflows — remote sync', () => {
       mockGetOrCreateConversation.mockReturnValueOnce(Promise.resolve(conversation));
       mockListCodebases.mockReturnValueOnce(Promise.resolve([]));
 
-      const platform = makePlatform();
-      await handleMessage(platform, 'conv-1', 'Hello');
+      await handleMessage(makePlatform(), 'conv-1', 'Hello');
 
-      expect(mockSendQuery).toHaveBeenCalled();
-      const calledCwd = mockSendQuery.mock.calls[0][1] as string;
-      expect(calledCwd).toBe('/home/test/.archon/workspaces');
+      expect(getCwdPassedToProvider()).toBe('/home/test/.archon/workspaces');
     });
   });
 });
