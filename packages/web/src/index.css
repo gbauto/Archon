@@ -10,35 +10,35 @@
    Dark navy base with warm gold accents, mirroring practicemanagementconsultants.com */
 :root {
   /* App-specific colors */
-  --surface: oklch(0.21 0.04 255);          /* dark navy sidebar/panels */
+  --surface: oklch(0.21 0.04 255); /* dark navy sidebar/panels */
   --surface-elevated: oklch(0.25 0.04 255); /* slightly lighter navy */
-  --border-bright: oklch(0.38 0.04 255);    /* visible borders on navy */
-  --text-primary: oklch(0.96 0.008 78);     /* warm off-white for dark bg */
-  --text-secondary: oklch(0.70 0.015 78);   /* muted warm text */
-  --text-tertiary: oklch(0.48 0.015 78);    /* very muted text */
-  --accent-hover: oklch(0.65 0.14 78);      /* darker gold on hover */
-  --accent-muted: oklch(0.32 0.07 78);      /* deep muted gold */
-  --surface-inset: oklch(0.13 0.03 255);    /* deepest inset bg */
-  --surface-hover: oklch(0.28 0.04 255);    /* hover state on navy */
-  --accent-bright: oklch(0.80 0.12 78);     /* bright gold highlight */
+  --border-bright: oklch(0.38 0.04 255); /* visible borders on navy */
+  --text-primary: oklch(0.96 0.008 78); /* warm off-white for dark bg */
+  --text-secondary: oklch(0.7 0.015 78); /* muted warm text */
+  --text-tertiary: oklch(0.48 0.015 78); /* very muted text */
+  --accent-hover: oklch(0.65 0.14 78); /* darker gold on hover */
+  --accent-muted: oklch(0.32 0.07 78); /* deep muted gold */
+  --surface-inset: oklch(0.13 0.03 255); /* deepest inset bg */
+  --surface-hover: oklch(0.28 0.04 255); /* hover state on navy */
+  --accent-bright: oklch(0.8 0.12 78); /* bright gold highlight */
   --success: oklch(0.65 0.17 155);
   --warning: oklch(0.75 0.15 75);
   --error: oklch(0.6 0.2 25);
 
   /* Node type colors */
-  --node-command: oklch(0.73 0.13 78);      /* gold */
-  --node-prompt: oklch(0.62 0.16 290);      /* purple */
-  --node-bash: oklch(0.75 0.15 75);         /* yellow-green */
+  --node-command: oklch(0.73 0.13 78); /* gold */
+  --node-prompt: oklch(0.62 0.16 290); /* purple */
+  --node-bash: oklch(0.75 0.15 75); /* yellow-green */
 
   /* shadcn variables - PMC navy + gold */
   --radius: 0.5rem;
-  --background: oklch(0.17 0.038 255);      /* main dark navy bg */
-  --foreground: oklch(0.96 0.008 78);       /* warm off-white */
+  --background: oklch(0.17 0.038 255); /* main dark navy bg */
+  --foreground: oklch(0.96 0.008 78); /* warm off-white */
   --card: oklch(0.21 0.04 255);
   --card-foreground: oklch(0.96 0.008 78);
   --popover: oklch(0.21 0.04 255);
   --popover-foreground: oklch(0.96 0.008 78);
-  --primary: oklch(0.73 0.13 78);           /* PMC gold #C9A84C */
+  --primary: oklch(0.73 0.13 78); /* PMC gold #C9A84C */
   --primary-foreground: oklch(0.14 0.03 255); /* dark navy on gold */
   --secondary: oklch(0.25 0.04 255);
   --secondary-foreground: oklch(0.96 0.008 78);
@@ -47,7 +47,7 @@
   --accent: oklch(0.28 0.06 78);
   --accent-foreground: oklch(0.96 0.008 78);
   --destructive: oklch(0.6 0.2 25);
-  --border: oklch(0.30 0.04 255);
+  --border: oklch(0.3 0.04 255);
   --input: oklch(0.28 0.04 255);
   --ring: oklch(0.73 0.13 78);
   --chart-1: oklch(0.73 0.13 78);
@@ -150,7 +150,12 @@ body {
 }
 
 /* PMC: Playfair Display for all headings */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: 'Playfair Display', Georgia, serif;
   font-weight: 700;
   letter-spacing: -0.01em;

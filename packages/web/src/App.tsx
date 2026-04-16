@@ -11,6 +11,13 @@ import { WorkflowsPage } from '@/routes/WorkflowsPage';
 import { WorkflowExecutionPage } from '@/routes/WorkflowExecutionPage';
 import { WorkflowBuilderPage } from '@/routes/WorkflowBuilderPage';
 import { SettingsPage } from '@/routes/SettingsPage';
+import { TtsPage } from '@/routes/TtsPage';
+import { BrtPage } from '@/routes/BrtPage';
+import { SgInkPage } from '@/routes/SgInkPage';
+import { NabaPage } from '@/routes/NabaPage';
+import { IhhtPage } from '@/routes/IhhtPage';
+import { QepPage } from '@/routes/QepPage';
+import { SocialContentPage } from '@/routes/SocialContentPage';
 
 interface ErrorBoundaryState {
   hasError: boolean;
@@ -77,6 +84,13 @@ export function App(): React.ReactElement {
                 <Route path="/workflows/runs/:runId" element={<WorkflowExecutionPage />} />
                 <Route path="/workflows/runs" element={<Navigate to="/workflows" replace />} />
                 <Route path="/settings" element={<SettingsPage />} />
+                <Route path="/tts" element={<TtsPage />} />
+                <Route path="/brt" element={<BrtPage />} />
+                <Route path="/sg-ink" element={<SgInkPage />} />
+                <Route path="/naba" element={<NabaPage />} />
+                <Route path="/ihht" element={<IhhtPage />} />
+                <Route path="/qep" element={<QepPage />} />
+                <Route path="/social-content" element={<SocialContentPage />} />
               </Route>
             </Routes>
           </BrowserRouter>
