@@ -174,21 +174,20 @@ export function Sidebar(): React.ReactElement {
 
   return (
     <aside
-      className="relative flex h-full flex-col border-r border-border bg-surface"
+      className="glass-panel relative z-10 flex h-full flex-col border-y-0 border-l-0 border-r border-border"
       style={{ width: `${String(width)}px` }}
     >
-      {/* Logo */}
+      {/* Brand mark — PMC logo with terracotta halo */}
       <div className="flex flex-col gap-3 p-4">
-        <Link to="/" className="flex items-center gap-2 hover:opacity-80 transition-opacity">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
-            <span className="text-sm font-semibold text-primary-foreground">P</span>
+        <Link to="/" className="hover-mini flex items-center" aria-label="PMC">
+          <div className="relative flex h-11 w-11 items-center justify-center">
+            <div className="absolute inset-0 rounded-full bg-[#D97757]/25 blur-lg" />
+            <img
+              src="/pmc-logo.png"
+              alt="PMC"
+              className="relative z-10 h-11 w-11 object-contain"
+            />
           </div>
-          <span
-            className="text-base font-semibold text-text-primary"
-            style={{ fontFamily: "'Playfair Display', serif" }}
-          >
-            PMC
-          </span>
         </Link>
       </div>
 
