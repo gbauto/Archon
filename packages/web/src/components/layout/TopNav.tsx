@@ -12,6 +12,7 @@ import {
   Activity,
   ClipboardList,
   Share2,
+  Briefcase,
 } from 'lucide-react';
 import { listDashboardRuns, getUpdateCheck } from '@/lib/api';
 import { cn } from '@/lib/utils';
@@ -19,6 +20,7 @@ import { cn } from '@/lib/utils';
 const tabs = [
   { to: '/chat', end: false, icon: MessageSquare, label: 'Chat' },
   { to: '/dashboard', end: true, icon: LayoutDashboard, label: 'Dashboard' },
+  { to: '/pmc', end: false, icon: Briefcase, label: 'PMC' },
   { to: '/workflows', end: false, icon: Workflow, label: 'Workflows' },
   { to: '/settings', end: false, icon: Settings, label: 'Settings' },
   { to: '/tts', end: false, icon: Volume2, label: 'TTS' },

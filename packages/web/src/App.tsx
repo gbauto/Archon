@@ -18,6 +18,7 @@ import { NABAPage } from '@/routes/NABAPage';
 import { IHHTPage } from '@/routes/IHHTPage';
 import { QEPPage } from '@/routes/QEPPage';
 import { SocialContentPage } from '@/routes/SocialContentPage';
+import { PMCPage } from '@/routes/PMCPage';
 
 interface ErrorBoundaryState {
   hasError: boolean;
@@ -79,6 +80,7 @@ export function App(): React.ReactElement {
                 <Route path="/chat" element={<ChatPage />} />
                 <Route path="/chat/*" element={<ChatPage />} />
                 <Route path="/dashboard" element={<DashboardPage />} />
+                <Route path="/pmc" element={<PMCPage />} />
                 <Route path="/workflows" element={<WorkflowsPage />} />
                 <Route path="/workflows/builder" element={<WorkflowBuilderPage />} />
                 <Route path="/workflows/runs/:runId" element={<WorkflowExecutionPage />} />
