@@ -6,6 +6,44 @@ import { homedir } from "node:os";
 const VAULT_DIR = process.env.SECOND_BRAIN_LOG_PATH
   || resolve(homedir(), "OneDrive/Desktop/gbauto/gbautomation/second-brain/intelligence/claude-sessions");
 
+// Known repo slugs under gbauto/ + adjacent. If the session cwd contains
+// one of these as a path segment, it becomes the archive subfolder.
+// Falls back to last path segment (or "unknown" for empty cwd).
+const KNOWN_SLUGS = [
+  "gbautomation",
+  "fisch-group",
+  "jid5274",
+  "pbauer",
+  "sylvan-hills",
+  "loren-piretra",
+  "cruz-creations",
+  "greg-trading",
+  "sm-eagle-scaffold",
+  "eagle-app",
+  "archon",
+  "consulting-co",
+  "wiki",
+];
+
+function slugFromCwd(cwd) {
+  if (!cwd) return "unknown";
+  const parts = String(cwd).replace(/\\/g, "/").split("/").filter(Boolean);
+  // Segment immediately after `gbauto/` is the client repo slug. Handles
+  // direct checkouts (`.../gbauto/{slug}/...`) AND Archon worktrees
+  // (`.../.archon/workspaces/gbauto/{slug}/worktrees/archon/...`).
+  for (let i = 0; i < parts.length - 1; i++) {
+    if (parts[i] === "gbauto" && KNOWN_SLUGS.includes(parts[i + 1])) {
+      return parts[i + 1];
+    }
+  }
+  // Any known slug anywhere, walking backward.
+  for (let i = parts.length - 1; i >= 0; i--) {
+    if (KNOWN_SLUGS.includes(parts[i])) return parts[i];
+  }
+  if (parts.includes(".archon")) return "archon";
+  return parts[parts.length - 1] || "unknown";
+}
+
 const transcriptPath = process.argv[2];
 if (!transcriptPath) {
   console.error("usage: claude-session-archive.mjs <transcript.jsonl>");
@@ -70,11 +108,13 @@ if (!sessionId || turns.length === 0) {
   process.exit(0);
 }
 
-mkdirSync(VAULT_DIR, { recursive: true });
+const repoSlug = slugFromCwd(cwd);
+const archiveDir = resolve(VAULT_DIR, repoSlug);
+mkdirSync(archiveDir, { recursive: true });
 
 const startDate = (firstTs || new Date().toISOString()).slice(0, 10);
 const shortId = sessionId.slice(0, 8);
-const outPath = resolve(VAULT_DIR, `${startDate}-${shortId}.md`);
+const outPath = resolve(archiveDir, `${startDate}-${shortId}.md`);
 
 const frontmatter = [
   "---",
@@ -82,6 +122,7 @@ const frontmatter = [
   `started: ${firstTs || ""}`,
   `ended: ${lastTs || ""}`,
   `cwd: ${cwd || ""}`,
+  `repo: ${repoSlug}`,
   `turn_count: ${turns.length}`,
   `tool_call_count: ${toolCallCount}`,
   `source: ${transcriptPath}`,
