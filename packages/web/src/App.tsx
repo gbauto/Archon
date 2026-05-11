@@ -19,6 +19,7 @@ import { IHHTPage } from '@/routes/IHHTPage';
 import { QEPPage } from '@/routes/QEPPage';
 import { SocialContentPage } from '@/routes/SocialContentPage';
 import { PMCPage } from '@/routes/PMCPage';
+import { ArtifactsPage } from '@/routes/ArtifactsPage';
 
 interface ErrorBoundaryState {
   hasError: boolean;
@@ -93,6 +94,7 @@ export function App(): React.ReactElement {
                 <Route path="/ihht" element={<IHHTPage />} />
                 <Route path="/qep" element={<QEPPage />} />
                 <Route path="/social-content" element={<SocialContentPage />} />
+                <Route path="/artifacts" element={<ArtifactsPage />} />
               </Route>
             </Routes>
           </BrowserRouter>

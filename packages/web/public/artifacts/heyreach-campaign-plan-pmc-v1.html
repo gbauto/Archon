@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>heyreach-campaign-plan-pmc-v1</title>
+<style>
+@page { size: Letter; margin: 0.75in; }
+body { font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        font-size: 10.5pt; line-height: 1.45; color: #222; max-width: 7.2in; margin: 0 auto; }
+h1 { font-size: 20pt; border-bottom: 2px solid #0a2342; padding-bottom: 4px; margin-top: 1.2em; color: #0a2342; }
+h2 { font-size: 14pt; margin-top: 1.4em; color: #0a2342; border-bottom: 1px solid #ccc; padding-bottom: 2px; }
+h3 { font-size: 12pt; margin-top: 1.1em; color: #1a1a1a; }
+h4 { font-size: 10.5pt; text-transform: uppercase; letter-spacing: 0.04em; color: #555; }
+p, li { orphans: 2; widows: 2; }
+blockquote { border-left: 3px solid #c6a96c; padding: 4px 14px; color: #333;
+              background: #faf7f0; margin: 0.8em 0; page-break-inside: avoid; font-style: italic; }
+code { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 9.5pt;
+        background: #f0f0ee; padding: 1px 4px; border-radius: 3px; }
+pre { background: #f5f5f2; padding: 10px 12px; border-radius: 5px; overflow-x: auto;
+       font-size: 9pt; page-break-inside: avoid; }
+pre code { background: none; padding: 0; }
+table { border-collapse: collapse; width: 100%; margin: 0.8em 0; font-size: 9.5pt; page-break-inside: avoid; }
+th, td { border: 1px solid #bbb; padding: 5px 8px; text-align: left; vertical-align: top; }
+th { background: #eee; color: #0a2342; }
+.wikilink { color: #0b5cad; font-style: italic; }
+hr { border: 0; border-top: 1px solid #ccc; margin: 1.5em 0; }
+ul, ol { padding-left: 1.4em; }
+a { color: #0b5cad; text-decoration: none; }
+</style></head><body><h1>PMC HeyReach Campaign Plan — v1 (Planning Mode)</h1>
+<blockquote>
+<p>Self-contained HeyReach-ready campaign blueprint. Everything needed to configure the campaign in HeyReach's UI and push leads is in this document. No wikilinks — operator-facing.</p>
+<p><strong>Voice discipline throughout:</strong> "Hermès of Healthcare Advisory" — quiet luxury, restrained confidence, editorial authority. Calm/curious NEPQ tonality. Never salesy, never fear-hooking, never marketing-animated. Calibrated questions exposing blind spots, not attention-grabs.</p>
+</blockquote>
+<hr />
+<h2>1. Campaign Identity</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Campaign name</strong></td>
+<td><code>PMC NEPQ LI v1 — 2026-04</code></td>
+</tr>
+<tr>
+<td><strong>Owner</strong></td>
+<td>Jason Diaz</td>
+</tr>
+<tr>
+<td><strong>Sender persona</strong></td>
+<td>Jason Diaz, Practice Management Consultants (advisor)</td>
+</tr>
+<tr>
+<td><strong>Brand</strong></td>
+<td>PMC only (zero BRT overlap — see §11)</td>
+</tr>
+<tr>
+<td><strong>Objective</strong></td>
+<td>Book 20-minute audit conversations with independent practice owners (1–8 providers)</td>
+</tr>
+<tr>
+<td><strong>Target ICP</strong></td>
+<td>Physician/owner-operators of independent practices, specialties per §6</td>
+</tr>
+<tr>
+<td><strong>Campaign type (HeyReach)</strong></td>
+<td>Cold Outreach, Sales Navigator lead source</td>
+</tr>
+<tr>
+<td><strong>Expected list size</strong></td>
+<td>30–50 leads per batch; scale after 30 days clean</td>
+</tr>
+</tbody>
+</table>
+<h2>2. Account &amp; Sender Configuration</h2>
+<h3>LinkedIn sender account</h3>
+<ul>
+<li><strong>Account:</strong> <code>jid5274@gmail.com</code> (Jason Diaz — <code>linkedin.com/in/jason-diaz-healthcare-innovator</code>)</li>
+<li><strong>Never use:</strong> the BioReg/BRT LinkedIn account. Dual-brand rule #1.</li>
+<li><strong>Required state in HeyReach:</strong> <code>isActive = true</code>, <code>authIsValid = true</code>, <code>isValidNavigator = true</code>. If <code>isActive = false</code>, toggle in HeyReach UI <strong>before</strong> launching.</li>
+<li><strong>Proxy:</strong> residential proxy assigned by HeyReach. Do not use home IP. Sign out of LinkedIn on all other browsers/devices 24h before first send.</li>
+</ul>
+<h3>Daily sending limits (conservative — raise only after 30 days clean)</h3>
+<ul>
+<li>18 connection requests / day</li>
+<li>40 direct messages / day</li>
+<li>80 profile views / day</li>
+</ul>
+<h3>Send window</h3>
+<ul>
+<li><strong>Days:</strong> Tuesday · Wednesday · Thursday only. No Mon (inbox triage) / Fri (B2B open-rate floor).</li>
+<li><strong>Time:</strong> 6:30am–10:00am recipient-local time. Physician-owners check inboxes before clinic opens.</li>
+</ul>
+<h2>3. Lead-Source Strategy</h2>
+<h3>Target ICP criteria (Sales Nav filters)</h3>
+<ul>
+<li>Title: Owner / Founder / MD / DC / DO / NP / Founder + Medical</li>
+<li>Company headcount: 2–50</li>
+<li>Industry: Health, Wellness &amp; Fitness; Medical Practice; Hospital &amp; Health Care</li>
+<li>Seniority: Owner / Partner / CXO / VP</li>
+<li>Years at company: 2+</li>
+<li>Geography: start USA, prioritize states with specialty density matching §6 variants</li>
+<li><strong>Keyword filters for specialty sorting:</strong> chiropractic, functional medicine, medspa, plastic surgery, longevity, anti-aging, concierge</li>
+</ul>
+<h3>Lead flow into HeyReach</h3>
+<ol>
+<li>Apollo "HeyReach-Queue-PMC" list is the single feeder</li>
+<li>Nightly <code>scripts/pull_from_apollo.py --enrich-missing --write</code> (cron 05:30 local) merges into <code>second-brain/contacts/master_leads.csv</code></li>
+<li>On-demand <code>scripts/heyreach_rest_push.py</code> validates (8-step dedup chain) then pushes PASS rows into a new HeyReach list named <code>PMC {YYYY-MM-DD} {segment}</code></li>
+<li>Each new list auto-attaches to this campaign</li>
+</ol>
+<h3>Dedup requirements before push (hard blockers)</h3>
+<ul>
+<li>No lead in any active BRT campaign (dual-brand rule — legal-grade)</li>
+<li>No lead in active Apollo email sequence for PMC</li>
+<li>No lead with <code>sequence_status</code> in <code>in-apollo</code>, <code>replied-apollo</code>, <code>suppressed</code></li>
+<li>No lead without a valid <code>https://www.linkedin.com/in/...</code> URL</li>
+<li>No lead already connected on LinkedIn as 1st-degree (flag to skip connect step, still include)</li>
+<li>Rate-budget check: max 18 new connections/day/account</li>
+</ul>
+<h2>4. The Sequence — 9 HeyReach Steps</h2>
+<p>Every step maps to a NEPQ phase (Miner). The prospect reaches the meeting ask through their own problem-awareness, not a pitch.</p>
+<h3>Step 1 — View Profile (Day 0)</h3>
+<ul>
+<li><strong>Action:</strong> <code>View Profile</code> (automated, zero-message)</li>
+<li><strong>Purpose:</strong> Surface Jason as a named profile viewer in the prospect's LinkedIn notifications</li>
+</ul>
+<h3>Step 2 — Like Recent Post (Day 1, conditional)</h3>
+<ul>
+<li><strong>Action:</strong> <code>Like latest post</code> (automated, only if the prospect posted within the last 30 days; skip if post is political or vendor-war)</li>
+<li><strong>Purpose:</strong> Second neutral warming touch. Shows up in their activity feed.</li>
+</ul>
+<h3>Step 3 — Connection Request (Day 2) — <strong>NEPQ: Connection</strong></h3>
+<p><strong>Action:</strong> <code>Send Connection Request with Note</code>. Character limit: 300.</p>
+<p><strong>Copy (279 chars):</strong></p>
+<blockquote>
+<p>Dr. [LastName] — I run an advisory that rebuilds RCM + workflow for 1–8 provider independent practices. Not pitching. Following independent physician owners who are the audience for our content. Happy to connect.</p>
+</blockquote>
+<p><strong>Move:</strong> peer-frame ("I run an advisory"), permission-based ("not pitching"), reverse-ask ("audience for our content" — you're offering future value, not asking for time).</p>
+<h3>Step 4 — Post-Accept DM #1 · Situation Question (Day 0 after accept) — <strong>NEPQ: Situation</strong></h3>
+<p><strong>Action:</strong> <code>Send Message</code>. Trigger: immediately on accept.</p>
+<p><strong>Copy:</strong></p>
+<blockquote>
+<p>Appreciate the connect, Dr. [LastName].</p>
+<p>Quick one if it's useful: across the last [FILL: N] independent practices we audited (1–8 providers), the honest answer to "how are denied claims being caught before they age past 90 days?" was usually some version of <em>"my biller watches for them, I think."</em> Median leakage sitting in that gap: <strong>$[FILL: exact audit figure — e.g. 147,200]/yr</strong>.</p>
+<p>How is that handoff handled at [Practice Name] today?</p>
+<p>Not a pitch — just curious where you land on the pattern.</p>
+<p>— Jason</p>
+</blockquote>
+<p><strong>Move:</strong> Voss calibrated question · Vaynerchuk give-first · Dunford (alternative implicit: not a software problem) · Miller (physician is the hero of the question).</p>
+<p><strong>Fill rule (hard):</strong> do not ship with <code>[FILL: …]</code> in place. Pull real audit data or rotate to a pattern-only variant (no figure). Never fabricate.</p>
+<h3>Step 5 — Post-Accept DM #2 · Problem-Awareness Question (Day 4 after accept) — <strong>NEPQ: Problem Awareness</strong></h3>
+<p><strong>Action:</strong> <code>Send Message</code>. Delay: 4 days from Step 4. Condition: no reply.</p>
+<p><strong>Copy:</strong></p>
+<blockquote>
+<p>Dr. [LastName] —</p>
+<p>Following up on the denial-queue note, one more curious question:</p>
+<p>When a claim does slip past the 90-day mark at [Practice Name], how does that usually show up on your end — do you see it on a report, does the biller raise it, or does it just quietly land in a write-off bucket at quarter-close?</p>
+<p>Asking because in [FILL: N] of the last [FILL: N] audits we ran it landed in the third bucket — which means nobody on the team actually <em>owns</em> the number. Not a software problem. Not a biller problem. A handoff problem.</p>
+<p>If that's even partly live at [Practice Name], worth a look. If not, I'll be quiet.</p>
+<p>— Jason</p>
+</blockquote>
+<p><strong>Move:</strong> Multi-option calibrated question where the third option is the diagnostic trap · three Dunford alternatives named · Miner permission-based exit.</p>
+<h3>Step 6 — Post-Accept DM #3 · Consequence + First Meeting Ask (Day 9 after accept) — <strong>NEPQ: Consequence + Commitment</strong></h3>
+<p><strong>Action:</strong> <code>Send Message</code>. Delay: 5 days from Step 5. Condition: no reply.</p>
+<p><strong>Copy:</strong></p>
+<blockquote>
+<p>Dr. [LastName] —</p>
+<p>Last operational question before I step back, because I don't want to over-poke:</p>
+<p>If that handoff gap stays the way it is for another 12 months at [Practice Name], what does that look like — is it <em>"same cash flow, roughly"</em>, or is it the kind of drift that quietly eats the year?</p>
+<p>I'm asking because the practices that ran our 30-day audit in January looked almost identical to the ones that waited until Q3 — except the Q3 ones were rebuilding against a bigger hole.</p>
+<p>If it's worth 20 minutes to see the actual number for [Practice Name], I'll send a calendar link. If the queue is clean, ignore me and I'll drop off.</p>
+<p>— Jason</p>
+</blockquote>
+<p><strong>Move:</strong> Voss consequence question with two framings (self-soothing vs. honest — prospect's own mind surfaces the consequence) · no-oriented close ("ignore me and I'll drop off") · Miner permission-based.</p>
+<h3>Step 7 — Post-Accept DM #4 · Voice Note · Solution-Awareness (Day 14 after accept) — <strong>NEPQ: Solution Awareness · CREATIVE</strong></h3>
+<p><strong>Action:</strong> <code>Send Voice Note</code> (HeyReach native — 30–45 sec MP3, &lt; 5MB). Delay: 5 days from Step 6. Condition: no reply.</p>
+<p><strong>Voice note script</strong> (record at 75% normal pace, calm/curious, slightly skeptical tone — never excited, no vocal fry):</p>
+<blockquote>
+<p>Dr. [LastName], Jason Diaz — PMC. Thirty-second voice note because I'm trying to be respectful of your inbox.</p>
+<p>One question, then I'll step back:</p>
+<p><em>If you could redesign the handoff between your front desk and your billing function from scratch — no legacy system, no existing team politics — what would need to be true for you to trust the number at the end of the month?</em></p>
+<p>Don't need you to answer. Just want to leave that question in your inbox, because the practices that finish our audit usually say the real work was answering that one honestly, not the consulting.</p>
+<p>If it ever feels like the right conversation, you know where to find me.</p>
+</blockquote>
+<p><strong>Text caption / fallback DM (send together with the voice note):</strong></p>
+<blockquote>
+<p>Dr. [LastName] — voice note above, ~40 sec. One Solution-Awareness question, no ask. If voice notes aren't your thing, the question is:</p>
+<p><em>If you could redesign the front-desk-to-billing handoff from scratch, what would need to be true for you to trust the month-end number?</em></p>
+<p>No reply needed — just wanted to leave it with you.</p>
+<p>— Jason</p>
+</blockquote>
+<p><strong>Move:</strong> Miner solution-awareness (prospect articulates their own fix) · pattern interrupt (voice vs. text in LinkedIn inbox) · explicit no-ask framing (drives reply paradoxically).</p>
+<h3>Step 8 — Post-Accept DM #5 · Third-Person Reverse Pressure (Day 19 after accept) — <strong>NEPQ: Commitment · CREATIVE</strong></h3>
+<p><strong>Action:</strong> <code>Send Message</code>. Delay: 5 days from Step 7. Condition: no reply.</p>
+<p><strong>Copy:</strong></p>
+<blockquote>
+<p>Dr. [LastName] —</p>
+<p>Going to drop this thread after one more note, because I'd rather be useful-and-gone than noisy-and-forgotten.</p>
+<p>A colleague asked me whether I should keep reaching out. I told her I'd stop unless I could leave you one useful number.</p>
+<p>So — one number. Across the last 12 independent practices we audited, the <em>median</em> addressable recovery sitting in aged denials + pre-auth errors was <strong>$[FILL: exact audit figure]/yr</strong> on a 4-provider practice. The top of the range was roughly 2× that.</p>
+<p>If that math is interesting for [Practice Name], reply "number" and I'll send a calendar link. If not, no harm — I'll close the loop.</p>
+<p>— Jason</p>
+</blockquote>
+<p><strong>Move:</strong> Voss reverse-pressure (third-person "overheard peer") · Hormozi precise odd figure + range · Miner binary-path close · one-word reply convention ("number") for micro-commitment.</p>
+<h3>Step 9 — Break-up (Day 25 after accept) — <strong>NEPQ: Permission-based exit</strong></h3>
+<p><strong>Action:</strong> <code>Send Message</code>. Delay: 6 days from Step 8. Condition: no reply. <strong>Last touch — stop sequence after.</strong></p>
+<p><strong>Copy:</strong></p>
+<blockquote>
+<p>Dr. [LastName] —</p>
+<p>Closing the thread so I'm not cluttering your LinkedIn.</p>
+<p>The 30-day Practice Audit stays open year-round, and the $50,000-or-free guarantee doesn't expire. If the RCM + workflow problem ever becomes live — next month or next year — replying to this DM puts you back in front of me directly.</p>
+<p>Until then, off your inbox.</p>
+<p>— Jason</p>
+</blockquote>
+<p><strong>Move:</strong> Cuban operator plainspokenness (clean exit) · Hormozi (offer + guarantee restated once, no re-pitch) · Miner permission-based close (paradoxically raises reply rate).</p>
+<hr />
+<h2>5. The "Captivating Hook" (Brand Interpretation)</h2>
+<p>Per PMC Brand Guide v2 — Quiet Luxury / Hermès of Healthcare Advisory — fear hooks and attention-grabs are explicitly retired. The PMC equivalent of a hook is the <strong>calibrated question exposing a blind spot</strong>, delivered in clinical-peer tone. Every step's opening sentence is engineered for this function.</p>
+<p><strong>What a PMC hook looks like (from this sequence):</strong>
+- "How are denied claims being caught before they age past 90 days?" (Step 4 — situation)
+- "How does that usually show up on your end — do you see it on a report, does the biller raise it, or does it just quietly land in a write-off bucket?" (Step 5 — the third option is the trap)
+- "Is it the kind of drift that quietly eats the year?" (Step 6 — consequence framing)
+- "If you could redesign that handoff from scratch, what would need to be true?" (Step 7 — solution-awareness)</p>
+<p><strong>What a PMC hook never is:</strong>
+- "Your front desk is leaking $200K/year" (retired — hero-posture, rounded number, fear hook)
+- "You're 90 days away from a completely different practice" (retired — AI-generated, generic, three-paragraph template)
+- Anything with exclamation marks, emoji, "Drop a comment," or "Hey [FirstName]!"</p>
+<hr />
+<h2>6. ICP Variant Swap Matrix</h2>
+<p>Default sequence above targets the <strong>generic 1–8 provider independent practice</strong>. For specialty-concentrated lists, swap the <strong>calibrated questions, labeling statements, Dunford alternatives, proof anchors, and subject line bank</strong> per variant below. Sequence architecture (9 steps, cadence, NEPQ phase per step) stays identical.</p>
+<h3>Variant A — Functional / Integrative Medicine</h3>
+<ul>
+<li><strong>Calibrated opener (Step 4):</strong> How are you currently measuring the margin on your membership — separately from cash visits and supplement revenue?</li>
+<li><strong>Labeling (Step 5):</strong> It sounds like the practice grew around the medicine you wanted to practice, but the pricing and membership structure was never redesigned as the patient base changed.</li>
+<li><strong>Dunford alternatives to name:</strong> Not a functional-med marketing agency · not another provider hire · not a membership-software vendor</li>
+<li><strong>Subject bank:</strong> <code>Superbill leakage pattern</code> · <code>Membership pricing audit</code> · <code>Your supplement margin</code> · <code>Cash vs. insurance gap</code></li>
+<li><strong>Proof anchor:</strong> <code>[FILL: pull from recent functional-med audit — median cash-pay collections gap, median supplement margin delta, or membership repricing uplift]</code></li>
+</ul>
+<h3>Variant B — Chiropractic</h3>
+<ul>
+<li><strong>Calibrated opener (Step 4):</strong> How is your care-plan completion rate tracked — and who sees it when a patient drops off between visit 6 and visit 12?</li>
+<li><strong>Labeling (Step 5):</strong> It sounds like the front desk is selling the plans fine, but nobody owns the retention conversation between visit 6 and visit 12 — which is where most of the package revenue actually disappears.</li>
+<li><strong>Dunford alternatives to name:</strong> Not a chiro CRM (Chirotouch / Genesis / Jane) · not another associate hire · not a chiro coach on a monthly group call</li>
+<li><strong>Subject bank:</strong> <code>Care plan drop-off</code> · <code>Visit 6 to 12 gap</code> · <code>Medicare doc pattern</code> · <code>Chiro denial codes</code></li>
+<li><strong>Proof anchor:</strong> <code>[FILL: pull from recent chiro audit — median package completion rate, denial-code pattern, or retention uplift after SOP rebuild]</code></li>
+</ul>
+<h3>Variant C — Plastics / Medspa / Aesthetics</h3>
+<ul>
+<li><strong>Calibrated opener (Step 4):</strong> How is your consult-to-procedure conversion tracked — and what happens to the consults that don't book same-day?</li>
+<li><strong>Labeling (Step 5):</strong> It sounds like marketing is doing its job — consults come in — but the conversion to booked procedure is where the real leakage is, and nobody owns the 30-day followup on the ones who leave "thinking about it."</li>
+<li><strong>Dunford alternatives to name:</strong> Not an aesthetics marketing agency · not a medspa software vendor (Aesthetic Record / PatientNow) · not another injector hire</li>
+<li><strong>Subject bank:</strong> <code>Consult-to-booking gap</code> · <code>Your package unit cost</code> · <code>30-day consult followup</code> · <code>No-show policy math</code></li>
+<li><strong>Proof anchor:</strong> <code>[FILL: pull from recent aesthetics audit — median consult-to-booking conversion, package margin after discount stack, or no-show rate delta after deposit policy]</code></li>
+</ul>
+<h3>Variant D — Longevity / Anti-Aging / Concierge</h3>
+<ul>
+<li><strong>Calibrated opener (Step 4):</strong> How are you measuring margin on your lab panels separately from the rest of the membership?</li>
+<li><strong>Labeling (Step 5):</strong> It sounds like the practice is profitable in aggregate, but you've never separated which service lines subsidize which — so every pricing decision is made without knowing which part of the business is actually carrying the margin.</li>
+<li><strong>Dunford alternatives to name:</strong> Not a concierge consultancy · not a lab rep (Quest / Genova / Labcorp) · not a fractional CFO</li>
+<li><strong>Subject bank:</strong> <code>Lab panel margin</code> · <code>Membership tier audit</code> · <code>Service line rollup</code> · <code>Executive physical LTV</code></li>
+<li><strong>Proof anchor:</strong> <code>[FILL: pull from recent concierge audit — median lab panel margin spread, membership repricing delta, or service-line profitability breakdown]</code></li>
+</ul>
+<h3>Variant selection rule</h3>
+<p>Pick the variant that matches &gt;60% of leads in the list. If the list is truly mixed (no dominant specialty), split into sub-lists by specialty before push — one variant per sub-list, never mix within a sub-list.</p>
+<hr />
+<h2>7. Tags Schema (HeyReach tags on every lead)</h2>
+<p>Applied automatically by <code>scripts/heyreach_rest_push.py</code> during import.</p>
+<table>
+<thead>
+<tr>
+<th>Tag category</th>
+<th>Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ICP variant</td>
+<td><code>icp-a-functional</code> · <code>icp-b-chiro</code> · <code>icp-c-medspa</code> · <code>icp-d-longevity</code> · <code>icp-default</code></td>
+</tr>
+<tr>
+<td>Source list</td>
+<td><code>src-apollo-heyreach-queue</code> · <code>src-manual</code> · <code>src-sg-ink-top-100</code> · <code>src-lead-list-1</code></td>
+</tr>
+<tr>
+<td>Geographic tier</td>
+<td><code>geo-fl</code> · <code>geo-ne</code> · <code>geo-tx</code> · <code>geo-ca</code> · (etc.)</td>
+</tr>
+<tr>
+<td>Practice size tier</td>
+<td><code>size-solo</code> · <code>size-2-3</code> · <code>size-4-8</code></td>
+</tr>
+<tr>
+<td>Lead tier</td>
+<td><code>tier-hot</code> · <code>tier-warm</code></td>
+</tr>
+<tr>
+<td>Brand (audit trail)</td>
+<td><code>brand-pmc</code> (always — never <code>brand-brt</code> in this campaign)</td>
+</tr>
+<tr>
+<td>Connection state</td>
+<td><code>linkedin-1st-degree</code> (if already connected — routes past Step 3)</td>
+</tr>
+</tbody>
+</table>
+<p>Filtering/reporting in HeyReach uses these tags: <code>icp-c-medspa AND tier-hot</code> surfaces highest-probability medspa leads for follow-up prioritization.</p>
+<h2>8. Webhooks (Automation Spine)</h2>
+<p>Register five events via <code>POST /api/public/webhook/Create</code> (exact path TBD — see §14 troubleshooting). Destination URL is either a Zapier catch hook, Make.com scenario, or n8n webhook — depending on which the operator has.</p>
+<table>
+<thead>
+<tr>
+<th>Event</th>
+<th>Handler action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ACCEPTED_INVITE</code></td>
+<td>Update <code>master_leads.csv</code>: <code>sequence_status = in-heyreach</code>, tag <code>connected</code>, <code>last_touched_at = now</code></td>
+</tr>
+<tr>
+<td><code>MESSAGE_REPLIED</code></td>
+<td><strong>Pause sequence for that lead</strong>. <code>sequence_status = replied</code>. Route reply text into <code>second-brain/intelligence/inbox/YYYY-MM-DD-replies.md</code>. Email operator via Gmail MCP (batched hourly to avoid noise).</td>
+</tr>
+<tr>
+<td><code>CONNECTION_REJECTED</code></td>
+<td><code>sequence_status = suppressed</code>, <code>suppression_reason = rejected-connect</code>. Add to master suppression list (cross-channel).</td>
+</tr>
+<tr>
+<td><code>DISCONNECT</code></td>
+<td>Hard suppress across PMC <strong>and</strong> BRT channels. Master suppression list update. Never contact again.</td>
+</tr>
+<tr>
+<td><code>MEETING_BOOKED</code></td>
+<td><code>sequence_status = booked</code>, tag <code>meeting-booked</code>. Immediate operator alert (bypasses batching).</td>
+</tr>
+</tbody>
+</table>
+<h3>Rate limit on operator alerts</h3>
+<p>No more than 1 batched email per hour except <code>MEETING_BOOKED</code> (immediate). Prevents inbox fatigue.</p>
+<hr />
+<h2>9. Reply Playbook (In-Inbox Objection Handling)</h2>
+<p>When a DM comes back, HeyReach pauses the sequence for that lead. The operator responds in-HeyReach (threaded, tracked) using the patterns below. <strong>Never argue. Never rebut. Always label.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Reply category</th>
+<th>Example incoming</th>
+<th>Response pattern</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Positive — curious</strong></td>
+<td>"tell me more" / "what do you do exactly?"</td>
+<td>One-paragraph answer that names the deliverable (RCM + workflow + team systems, 30-day audit). One calibrated follow-up question. No deck, no pitch.</td>
+</tr>
+<tr>
+<td><strong>Positive — book</strong></td>
+<td>"sure, send a time" / "happy to chat"</td>
+<td>Calendar link. Stop sequence immediately. No additional context.</td>
+</tr>
+<tr>
+<td><strong>Objection — not now</strong></td>
+<td>"not a priority right now" / "maybe Q1"</td>
+<td>Label: <em>"It sounds like the timing's not live — which makes sense. If the denial queue or front-desk handoff becomes a priority, I'll be here."</em> Pause 30 days. Resume at Step 8 (reverse-pressure) only.</td>
+</tr>
+<tr>
+<td><strong>Objection — we're fine</strong></td>
+<td>"we don't need this" / "we're covered"</td>
+<td>Label: <em>"Totally fair. Most practices I talk to have the clinical side locked down — the question is usually whether the operational math is as clean as it feels. If it ever isn't, you know where to find me."</em> No rebuttal.</td>
+</tr>
+<tr>
+<td><strong>Objection — have someone</strong></td>
+<td>"we already have a consultant" / "working with X"</td>
+<td>Label: <em>"Good — means the problem is named. My work usually picks up where project consultants leave off, once the deck is done. If that phase ever comes, happy to compare notes."</em> No competitive attack.</td>
+</tr>
+<tr>
+<td><strong>Generic inbox / auto-reply</strong></td>
+<td>"This inbox is not monitored"</td>
+<td>Drop from sequence. Mark <code>bounced-generic</code>. Add to suppression.</td>
+</tr>
+<tr>
+<td><strong>Curious but vague</strong></td>
+<td>"what would this look like?"</td>
+<td>Send the one-pager. Resume sequence at next scheduled step.</td>
+</tr>
+<tr>
+<td><strong>Angry / unsubscribe</strong></td>
+<td>"stop messaging me" / vulgar</td>
+<td>Honor immediately. Cross-channel suppression. Apologize once, briefly. Close loop.</td>
+</tr>
+</tbody>
+</table>
+<h3>Discovery-call bridge</h3>
+<p>Any positive reply that progresses to a 20-minute call — run the discovery per <code><span class="wikilink">discovery-banks</span></code> (calibrated-question bank + labeling-statement bank). Target: one label per call hits "that's right." If under 50% hit rate, the label is wrong — iterate.</p>
+<hr />
+<h2>10. Metrics + Benchmarks</h2>
+<p>Track in HeyReach native reporting + Notion/Sheets rollup. <strong>Reply rate is a vanity metric — do not optimize for it.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Definition</th>
+<th>Benchmark (Month 1)</th>
+<th>Why it matters</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Connection acceptance %</strong></td>
+<td>accepted / connection-requests-sent</td>
+<td>30–40%</td>
+<td>List quality + connection note copy</td>
+</tr>
+<tr>
+<td><strong>DM→reply %</strong></td>
+<td>replies / accepted-connections</td>
+<td>12–20%</td>
+<td>Step 4 + 5 calibrated-question quality</td>
+</tr>
+<tr>
+<td><strong>Reply→meeting %</strong></td>
+<td>meetings booked / replies received</td>
+<td>25–35%</td>
+<td>Reply-playbook execution quality</td>
+</tr>
+<tr>
+<td><strong>Meetings per 100 connections sent</strong></td>
+<td>end-to-end funnel</td>
+<td>1.5–3.0</td>
+<td><strong>The only number that matters</strong></td>
+</tr>
+<tr>
+<td><strong>"That's right" hit rate on discovery calls</strong></td>
+<td>50%+ target</td>
+<td>Measured per call</td>
+<td>Proves the NEPQ discovery is qualifying, not just talking</td>
+</tr>
+<tr>
+<td><strong>Disconnect/block rate</strong></td>
+<td>disconnects / total leads sent</td>
+<td>&lt; 1%</td>
+<td>Brand damage signal — if this creeps up, copy is off-brand</td>
+</tr>
+<tr>
+<td><strong>Response time to positive replies</strong></td>
+<td>time from reply to calendar link sent</td>
+<td>&lt; 4 business hours</td>
+<td>Deal velocity</td>
+</tr>
+</tbody>
+</table>
+<h3>When to iterate</h3>
+<ul>
+<li>Connection acceptance &lt;25% for 2 weeks → connection note copy is off, or the list ICP is wrong. Re-target.</li>
+<li>DM→reply &lt;8% for 2 weeks → Step 4 calibrated question isn't pinging. Rewrite per ICP variant.</li>
+<li>Meetings per 100 connections &lt;1.0 at 30 days → whole funnel needs a teardown. Do not scale.</li>
+</ul>
+<hr />
+<h2>11. Suppression + Dual-Brand Guardrails (Legal-Grade)</h2>
+<h3>The three hard rules</h3>
+<ol>
+<li><strong>Never send PMC and BRT messaging from the same mailbox to the same prospect.</strong> If in PMC pipeline, no BRT. If in BRT pipeline, no PMC. Cross-pollination happens through the advisory relationship (Jason in a call), never via an automated channel.</li>
+<li><strong>The PMC → BRT bridge is always the advisory relationship, never the email.</strong> A PMC client with a clinical retention problem hears about BRT in an advisory conversation. The advisor's credibility transfers.</li>
+<li><strong>Sender accounts are brand-specific.</strong> <code>jid5274@gmail.com</code> is the PMC persona on LinkedIn. The BRT LinkedIn account is separate. Never cross-post.</li>
+</ol>
+<h3>Suppression pipeline (runs before every push — <code>scripts/master_leads_validate.py</code> enforces)</h3>
+<ol>
+<li><strong>Schema compliance</strong> — required fields present</li>
+<li><strong>LinkedIn URL validity</strong> — must match <code>https://www.linkedin.com/in/...</code> pattern for HeyReach</li>
+<li><strong>Apollo Sent dedup</strong> — <code>sequence_status ∈ {in-apollo, replied-apollo}</code> → REJECT</li>
+<li><strong>BRT active campaigns dedup</strong> — cross-file check against BRT lead files → REJECT + legal-grade flag</li>
+<li><strong>Master suppression dedup</strong> — <code>sequence_status = suppressed</code> → REJECT</li>
+<li><strong>HeyReach existing state dedup</strong> — already in another active list → REJECT</li>
+<li><strong>LinkedIn 1st-degree check</strong> — if already connected, route past Step 3 (connection request) but include</li>
+<li><strong>Rate-budget check</strong> — max 18 new connections/day → truncate batch if over</li>
+</ol>
+<p>Any legal-grade flag (BRT overlap) <strong>blocks the live push</strong> — operator must resolve manually.</p>
+<h3>Master suppression list columns</h3>
+<p><code>linkedin_url, email, reason, suppressed_at, brand_of_original_contact, channel_of_original_contact</code></p>
+<hr />
+<h2>12. Pre-Launch Checklist (Hard Blockers — All Must Pass)</h2>
+<h3>HeyReach account state</h3>
+<ul>
+<li>[ ] LinkedIn account <code>jid5274@gmail.com</code> shows <code>isActive: true</code> in HeyReach UI</li>
+<li>[ ] Auth is valid (green indicator, not yellow/red)</li>
+<li>[ ] Sales Navigator session valid</li>
+<li>[ ] Residential proxy assigned by HeyReach (not home IP)</li>
+<li>[ ] No "suspicious activity" email from LinkedIn in last 72h</li>
+</ul>
+<h3>Campaign configuration</h3>
+<ul>
+<li>[ ] Campaign created in HeyReach UI with exact name <code>PMC NEPQ LI v1 — 2026-04</code></li>
+<li>[ ] Sender accounts: only <code>jid5274@gmail.com</code> selected. BRT account NOT added.</li>
+<li>[ ] All 9 steps configured with copy from §4 (or variant-specific per §6)</li>
+<li>[ ] Step 7 voice note uploaded — MP3, 30–45 sec, recorded in Jason's voice (not AI-generated)</li>
+<li>[ ] Send window: Tue/Wed/Thu 6:30am–10:00am recipient local</li>
+<li>[ ] Daily limits: 18 connects / 40 DMs / 80 profile views</li>
+<li>[ ] Campaign is <strong>Paused</strong> state — do not start yet</li>
+</ul>
+<h3>Lead data state</h3>
+<ul>
+<li>[ ] <code>master_leads.csv</code> exists with required schema</li>
+<li>[ ] Every lead has <code>linkedin_url</code> matching regex</li>
+<li>[ ] Zero overlap with active BRT campaigns (verified by validator legal-grade check)</li>
+<li>[ ] Zero overlap with active Apollo PMC email campaigns</li>
+<li>[ ] Every <code>[FILL: …]</code> placeholder resolved with real audit data OR rewritten to pattern-only</li>
+<li>[ ] ICP variant assigned per lead (tag + channel_policy column)</li>
+<li>[ ] Tier-based send order planned: Hot first, Warm 2 weeks later</li>
+</ul>
+<h3>Brand discipline audit (from framework cheatsheet)</h3>
+<ul>
+<li>[ ] Every email/DM names the deliverable (RCM, billing recovery, workflow) — not "consulting" / "advisory"</li>
+<li>[ ] Every email/DM names at least one Dunford alternative</li>
+<li>[ ] Every calibrated question is truly open-ended (how/what), not a disguised hook</li>
+<li>[ ] Every touch treats the physician/owner as the hero, PMC as the guide</li>
+<li>[ ] Subject lines (for any In-Mail): 3–5 words, no question mark</li>
+<li>[ ] "15+ years" appears zero times across the sequence (quarterly cap preserved)</li>
+<li>[ ] No fear hooks ("leaking $200K/year" — retired)</li>
+<li>[ ] No rounded numbers — precise odd figures only, from real audits</li>
+<li>[ ] CTA is 20-minute audit conversation, not a service buy</li>
+<li>[ ] Voice note is quiet-luxury tone (calm, curious, slightly skeptical) — not excited/salesy</li>
+</ul>
+<h3>Infrastructure</h3>
+<ul>
+<li>[ ] 5 webhooks registered with current destination URL (Zapier/Make/n8n)</li>
+<li>[ ] <code>HEYREACH_API_KEY</code> set in environment for scripts</li>
+<li>[ ] Cron scheduled for nightly Apollo pull (optional — can run manually at first)</li>
+<li>[ ] Operator has HeyReach UI and <code>second-brain/</code> repo open for monitoring</li>
+</ul>
+<p><strong>If any box is unchecked, do not launch.</strong></p>
+<hr />
+<h2>13. Day-by-Day Activation Runbook</h2>
+<h3>T-7 days (pre-launch prep)</h3>
+<ul>
+<li>Pull first 30–50 leads via <code>scripts/pull_from_apollo.py --list-id &lt;HeyReach-Queue-PMC-list-id&gt; --enrich-missing --write</code></li>
+<li>Run <code>scripts/master_leads_validate.py</code> — review report, resolve any legal-grade flags</li>
+<li>Assign ICP variant per lead (manual or via Sales Nav title keyword rules)</li>
+<li>Record Step 7 voice note (3 alternate takes — pick best)</li>
+<li>Verify pre-launch checklist §12 — every box</li>
+</ul>
+<h3>T-1 day</h3>
+<ul>
+<li>Final pre-flight: run <code>scripts/heyreach_rest_push.py --live</code> preflight (no actual push; just verify account + campaigns)</li>
+<li>Confirm <code>isActive = true</code>, auth valid</li>
+<li>Operator blocks 2 hours the next morning for inbox monitoring</li>
+</ul>
+<h3>T-Day (Tuesday, 6:30am launch)</h3>
+<ul>
+<li>Push batch: <code>scripts/heyreach_rest_push.py --leads master_leads.csv --campaign-id &lt;ID&gt; --list-name "PMC 2026-MM-DD batch-1" --live</code></li>
+<li>HeyReach UI: flip campaign state from Paused to <strong>Running</strong></li>
+<li>Monitor dashboard for first 2 hours — check send rate, acceptance signal, any errors</li>
+</ul>
+<h3>T+1 through T+3 (Wed/Thu of week 1)</h3>
+<ul>
+<li>Monitor inbox 3× daily: morning / midday / end of day</li>
+<li>Reply to positive replies within 4 business hours (per §9 playbook)</li>
+<li>Any legal-grade flag surfaced? — pause campaign, investigate</li>
+</ul>
+<h3>T+7 (Monday of week 2)</h3>
+<ul>
+<li>Weekly review: metrics vs. benchmarks per §10</li>
+<li>If connection acceptance &lt;25% → pause, rewrite connection note, do not resume until copy is approved</li>
+<li>If all green → prepare Warm-tier batch for T+14 send</li>
+</ul>
+<h3>T+14 (Tuesday of week 3)</h3>
+<ul>
+<li>Push Warm-tier batch (same cadence, same campaign)</li>
+<li>First Step 7 voice notes start landing — watch for voice-note open rate vs. text-only</li>
+</ul>
+<h3>T+30 (end of month 1)</h3>
+<ul>
+<li>Full metrics review</li>
+<li>Decision: scale up daily limits (e.g., 18 → 25 connects/day), scale down (if brand damage signals), or iterate copy</li>
+<li>Document learnings, append to this file as an appendix</li>
+<li>Graduate to v1.1 with updated copy if needed</li>
+</ul>
+<hr />
+<h2>14. Troubleshooting + Kill Switches</h2>
+<h3>Common issues</h3>
+<table>
+<thead>
+<tr>
+<th>Symptom</th>
+<th>Likely cause</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>401 Unauthorized</code> from HeyReach REST</td>
+<td>API key rotated or typo</td>
+<td>Regenerate in HeyReach UI → Settings → API Keys; update env var</td>
+</tr>
+<tr>
+<td>Campaign won't start</td>
+<td><code>isActive: false</code> on LinkedIn account</td>
+<td>Toggle active in HeyReach UI</td>
+</tr>
+<tr>
+<td>Leads added but not appearing in campaign</td>
+<td>List-to-campaign attach failed silently</td>
+<td>HeyReach UI → campaign → Leads tab; retry attach via <code>AddLeadsFromListV2</code></td>
+</tr>
+<tr>
+<td>LinkedIn "suspicious activity" warning</td>
+<td>Sending too fast / IP issues</td>
+<td>Pause immediately. Lower daily budget. Wait 72h before resuming.</td>
+</tr>
+<tr>
+<td>Voice note rejected on upload</td>
+<td>Wrong format</td>
+<td>MP3, mono, &lt;60 sec, &lt;5MB</td>
+</tr>
+<tr>
+<td>Validator legal-grade flag</td>
+<td>BRT overlap (real dual-brand violation)</td>
+<td>Route lead to one brand only. Never auto-resolve.</td>
+</tr>
+<tr>
+<td>Webhook not firing</td>
+<td>Destination URL changed or auth failed</td>
+<td>Test with HeyReach's webhook debugger. Re-register if needed.</td>
+</tr>
+</tbody>
+</table>
+<h3>Kill switches (in order of severity)</h3>
+<ol>
+<li><strong>Pause one lead's sequence.</strong> HeyReach → Leads → Stop in Campaign. Use when a reply comes in that needs human follow-up.</li>
+<li><strong>Pause the whole campaign.</strong> HeyReach → Campaigns → Pause. All sends stop immediately. Use when: metrics go sideways, brand damage signal, unexplained error spike.</li>
+<li><strong>Revoke the HeyReach API key.</strong> HeyReach → Settings → API Keys → Revoke. Use if credential leakage suspected.</li>
+<li><strong>Disconnect LinkedIn account.</strong> HeyReach → Linked Accounts → Disconnect. Cuts all sending from this account. Use if LinkedIn flags the account for suspicious activity.</li>
+<li><strong>Revert <code>master_leads.csv</code>.</strong> <code>git checkout &lt;sha&gt; -- second-brain/contacts/master_leads.csv</code>. Use if a bad push corrupted state.</li>
+</ol>
+<hr />
+<h2>15. Framework Provenance (What Every Design Choice Traces To)</h2>
+<table>
+<thead>
+<tr>
+<th>Design choice</th>
+<th>Framework source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Calibrated question openers (Steps 3, 4, 5, 6, 7)</td>
+<td>Voss — <em>Never Split the Difference</em></td>
+</tr>
+<tr>
+<td>Labeling statements in objection handling</td>
+<td>Voss — "It sounds like…"</td>
+</tr>
+<tr>
+<td>No-oriented close (Step 6 end + Step 9)</td>
+<td>Voss — "Is it a ridiculous idea…"</td>
+</tr>
+<tr>
+<td>Physician as hero / PMC as guide</td>
+<td>Miller — StoryBrand SB7</td>
+</tr>
+<tr>
+<td>Naming alternatives (three, at minimum one per touch)</td>
+<td>Dunford — <em>Obviously Awesome</em> positioning</td>
+</tr>
+<tr>
+<td>Dream outcome × likelihood / (time × effort)</td>
+<td>Hormozi — Value Equation</td>
+</tr>
+<tr>
+<td>30-day audit as Grand Slam Offer stack</td>
+<td>Hormozi — Grand Slam Offer</td>
+</tr>
+<tr>
+<td>Precise odd numbers from real audits</td>
+<td>Hormozi — credibility signals</td>
+</tr>
+<tr>
+<td>Give-first cadence (3 gifts before ask)</td>
+<td>Vaynerchuk — jab-jab-jab-right-hook</td>
+</tr>
+<tr>
+<td>LinkedIn-native, no link-outs</td>
+<td>Vaynerchuk — underpriced attention</td>
+</tr>
+<tr>
+<td>Permission-based opens + break-up</td>
+<td>Miner — NEPQ</td>
+</tr>
+<tr>
+<td>Discovery over pitch</td>
+<td>Miner — NEPQ Situation/Problem/Consequence/Solution phases</td>
+</tr>
+<tr>
+<td>20-min CTA (never a service buy)</td>
+<td>Miner — micro-commitment</td>
+</tr>
+<tr>
+<td>Quiet-luxury / Hermès tone discipline</td>
+<td>PMC Brand Guide v2</td>
+</tr>
+<tr>
+<td>Dual-brand zero-overlap rule</td>
+<td>PMC + BRT Dual-Brand Audit</td>
+</tr>
+<tr>
+<td>Offer pricing for &gt;70% gross margin</td>
+<td>Cuban — operator discipline</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>16. Success Definition</h2>
+<p>At 30 days running clean:
+- ≥3 meetings booked per 100 connection requests sent
+- ≥1 meeting that converts to a discovery call scoring ≥70% on "that's right" hit rate
+- ≥1 paid 30-day Practice Audit engagement signed
+- Zero dual-brand suppression violations
+- Zero retirements of copy due to brand-voice drift
+- ≤1% disconnect/block rate</p>
+<p>Hit 3 of 5 → graduate to v1.1 with tightened copy and higher daily send limits. Hit all 5 → scale daily limits to 25 connects/day and add second LinkedIn sender account.</p>
+<hr />
+<h2>17. Open Questions (Decisions Needed Before Launch)</h2>
+<ol>
+<li><strong>Real audit numbers</strong> — what's the verified median denied-claim leakage to inject into Steps 4 and 8 <code>[FILL: …]</code> placeholders? If none exist, we ship pattern-only variants of those steps.</li>
+<li><strong>Webhook destination</strong> — Zapier, Make, n8n, or Cloudflare Worker? Pick one so webhook URLs can be registered.</li>
+<li><strong>First batch composition</strong> — pure default (generic 1–8 provider) or specialty-targeted (pick one variant from §6 for a clean signal read)?</li>
+<li><strong>Mental Health variant (E)</strong> — from the 2026-04-23 Medspa+Chiro enriched list, 24 rows are mental-health practices. If we want to campaign those via HeyReach, variant E needs to be drafted first. Deferred.</li>
+<li><strong>Voice note take</strong> — Jason records 3 alternates; which is the canonical one? (Has to sound like him, not a read script.)</li>
+</ol></body></html>

@@ -13,6 +13,7 @@ import {
   ClipboardList,
   Share2,
   Briefcase,
+  FolderOpen,
 } from 'lucide-react';
 import { listDashboardRuns, getUpdateCheck } from '@/lib/api';
 import { cn } from '@/lib/utils';
@@ -30,6 +31,7 @@ const tabs = [
   { to: '/ihht', end: false, icon: Activity, label: 'IHHT' },
   { to: '/qep', end: false, icon: ClipboardList, label: 'QEP' },
   { to: '/social-content', end: false, icon: Share2, label: 'Social Content' },
+  { to: '/artifacts', end: false, icon: FolderOpen, label: 'Artifacts' },
 ] as const;
 
 export function TopNav(): React.ReactElement {
