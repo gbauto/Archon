@@ -1,14 +1,37 @@
 import { NavLink, Link } from 'react-router';
 import { useQuery } from '@tanstack/react-query';
-import { LayoutDashboard, MessageSquare, Workflow, Settings } from 'lucide-react';
+import {
+  LayoutDashboard,
+  MessageSquare,
+  Workflow,
+  Settings,
+  Volume2,
+  BarChart2,
+  PenLine,
+  Globe,
+  Activity,
+  ClipboardList,
+  Share2,
+  Briefcase,
+  FolderOpen,
+} from 'lucide-react';
 import { listDashboardRuns, getUpdateCheck } from '@/lib/api';
 import { cn } from '@/lib/utils';
 
 const tabs = [
   { to: '/chat', end: false, icon: MessageSquare, label: 'Chat' },
   { to: '/dashboard', end: true, icon: LayoutDashboard, label: 'Dashboard' },
+  { to: '/pmc', end: false, icon: Briefcase, label: 'PMC' },
   { to: '/workflows', end: false, icon: Workflow, label: 'Workflows' },
   { to: '/settings', end: false, icon: Settings, label: 'Settings' },
+  { to: '/tts', end: false, icon: Volume2, label: 'TTS' },
+  { to: '/brt', end: false, icon: BarChart2, label: 'BRT' },
+  { to: '/sg-ink', end: false, icon: PenLine, label: 'SG INK' },
+  { to: '/naba', end: false, icon: Globe, label: 'NABA' },
+  { to: '/ihht', end: false, icon: Activity, label: 'IHHT' },
+  { to: '/qep', end: false, icon: ClipboardList, label: 'QEP' },
+  { to: '/social-content', end: false, icon: Share2, label: 'Social Content' },
+  { to: '/artifacts', end: false, icon: FolderOpen, label: 'Artifacts' },
 ] as const;
 
 export function TopNav(): React.ReactElement {
@@ -35,9 +58,14 @@ export function TopNav(): React.ReactElement {
       {/* Brand logo */}
       <Link to="/chat" className="flex items-center gap-2 mr-4 hover:opacity-80 transition-opacity">
         <div className="flex h-7 w-7 items-center justify-center rounded-md bg-primary">
-          <span className="text-sm font-semibold text-primary-foreground">A</span>
+          <span className="text-sm font-semibold text-primary-foreground">P</span>
         </div>
-        <span className="text-sm font-semibold text-text-primary">Archon</span>
+        <span
+          className="text-sm font-semibold text-text-primary"
+          style={{ fontFamily: "'Playfair Display', serif" }}
+        >
+          PMC
+        </span>
       </Link>
 
       {tabs.map(({ to, end, icon: Icon, label }) => (

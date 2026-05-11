@@ -36,6 +36,7 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: {
         '@': path.resolve(__dirname, './src'),
+        '@second-brain': path.resolve(__dirname, '../../../second-brain'),
       },
       dedupe: [
         'mdast-util-find-and-replace',
@@ -46,6 +47,9 @@ export default defineConfig(({ mode }) => {
     },
     server: {
       port: 5173,
+      fs: {
+        allow: [path.resolve(__dirname, '../..'), path.resolve(__dirname, '../../../second-brain')],
+      },
       proxy: {
         '/api': {
           target: `http://localhost:${apiPort}`,

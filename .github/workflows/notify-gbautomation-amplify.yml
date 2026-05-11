@@ -1,0 +1,23 @@
+name: Notify GBAutomation Amplify
+
+on:
+  push:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch landing sync
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.GBAUTOMATION_LANDING_PAT }}
+          repository: gbauto/gb-automation-landing
+          event-type: jid5274-archon-update
+          client-payload: >-
+            {
+              "tenant": "jid5274",
+              "source_repo": "${{ github.repository }}",
+              "sha": "${{ github.sha }}",
+              "ref": "${{ github.ref_name }}",
+              "parent_branch": "master"
+            }
