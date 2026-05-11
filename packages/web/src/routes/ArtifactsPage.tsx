@@ -14,7 +14,15 @@ interface ArtifactManifest {
   artifacts: ArtifactEntry[];
 }
 
-const manifestUrl = '/artifacts/manifest.json';
+const baseUrl = import.meta.env.BASE_URL;
+const manifestUrl = `${baseUrl}artifacts/manifest.json`;
+
+function resolveArtifactHref(href: string): string {
+  if (href.startsWith('http://') || href.startsWith('https://')) return href;
+  if (href.startsWith('/artifacts/')) return `${baseUrl}${href.slice(1)}`;
+  if (href.startsWith('artifacts/')) return `${baseUrl}${href}`;
+  return href;
+}
 
 function formatSize(sizeBytes: number): string {
   if (sizeBytes < 1024) return `${sizeBytes} B`;
@@ -64,6 +72,7 @@ export function ArtifactsPage(): React.ReactElement {
     () => manifest?.artifacts.find(artifact => artifact.href === selectedHref) ?? null,
     [manifest, selectedHref]
   );
+  const selectedArtifactHref = selectedArtifact ? resolveArtifactHref(selectedArtifact.href) : null;
 
   if (error) {
     return (
@@ -137,7 +146,7 @@ export function ArtifactsPage(): React.ReactElement {
           </div>
           {selectedArtifact && (
             <a
-              href={selectedArtifact.href}
+              href={selectedArtifactHref ?? undefined}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-md border border-border px-3 py-2 text-sm text-text-secondary hover:bg-muted hover:text-text-primary"
@@ -151,7 +160,7 @@ export function ArtifactsPage(): React.ReactElement {
           <iframe
             key={selectedArtifact.href}
             title={selectedArtifact.title}
-            src={selectedArtifact.href}
+            src={selectedArtifactHref ?? undefined}
             className="min-h-0 flex-1 border-0 bg-white"
           />
         )}

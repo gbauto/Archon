@@ -70,11 +70,13 @@ class ErrorBoundary extends Component<{ children: ReactNode }, ErrorBoundaryStat
 }
 
 export function App(): React.ReactElement {
+  const basename = import.meta.env.BASE_URL === '/' ? undefined : import.meta.env.BASE_URL;
+
   return (
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
         <ProjectProvider>
-          <BrowserRouter>
+          <BrowserRouter basename={basename}>
             <Routes>
               <Route element={<Layout />}>
                 <Route path="/" element={<Navigate to="/chat" replace />} />
